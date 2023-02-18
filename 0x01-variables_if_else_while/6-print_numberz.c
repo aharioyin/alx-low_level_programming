@@ -11,7 +11,7 @@ int main(void)
 {
 	int n;
 
-	for (n = 0; n <= 10; n++)
+	for (n = 0; n < 10; n++)
 		purchar(n);
 	purchar('\n');
 	return (0);
