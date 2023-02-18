@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include <stdout>
+#include <stdlib.h>
+#include <time.h>
+
 /**
  * main - print the alphabet in lower case using putchar
  *
