@@ -9,10 +9,12 @@
 
 int main(void)
 {
-	int n;
+	int x;
 
-	for (n = 0; n < 10; n++)
-		purchar(n);
+	for (x = '0'; x <= '9'; x++)
+		putchar(x);
+
 	purchar('\n');
+
 	return (0);
 }
