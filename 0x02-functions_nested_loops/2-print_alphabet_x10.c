@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * print_alphabet_10x - print 10 times the alphabeth in lowercase
+ * print_alphabet_10x - print 10 times the alphabet, in lowercase
  */
 void print_alphabet_x10(void)
 {
-	int i = 0,
+	int i = 0;
 	char low;
 
 	while (i++ <= 9)
