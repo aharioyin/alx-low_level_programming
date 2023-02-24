@@ -20,5 +20,7 @@ int main(void)
 
 	day = convert_day(month, day);
 
+	print_remaining_days(month, day, year);
+
 	return (0);
 }
