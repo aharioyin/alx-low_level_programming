@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * print_line -  function that draws a straight line
- *@n - an input integer
- * Return - void
+ *@n: an input integer
+ * Return: void
  */
 
 void print_line(int n)
