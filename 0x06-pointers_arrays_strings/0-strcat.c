@@ -8,7 +8,7 @@
 
 char *_strcat(char *dest, char *src)
 {
-	char *link = dest
+	char *l = dest;
 
 	while (*dest != '\0')
 	{
@@ -21,6 +21,6 @@ char *_strcat(char *dest, char *src)
 		src++;
 	}
 	*dest = '\0';
-	return (link);
+	return (l);
 }
 
