@@ -4,7 +4,7 @@
 /**
  *string_toupper -change all lowercase letters of a string to uppercase
  *@s: string
- * Return: 0
+ * Return: char
  */
 
 char *string_toupper(char *s)
@@ -15,8 +15,9 @@ char *string_toupper(char *s)
 	{
 		if (s[i] >= 'a' && s[i] <= 'z')
 		{
-			s[i] = s[i] - 32;
+			s[i] -= 'a' - 'A';
+			i++;
 		}
 	}
-	return (0);
+	return (s);
 }
