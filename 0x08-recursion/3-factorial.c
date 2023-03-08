@@ -8,6 +8,8 @@
 
 int factorial(int n)
 {
+	int i;
+
 	if (n < 0)
 	{
 		return (-1);
@@ -15,5 +17,10 @@ int factorial(int n)
 	else if (n == 0)
 	{
 		return (1);
-	return n * factorial(n - 1);
-}		
+	}
+	else
+	{
+		i = return n * factorial(n - 1);
+	}
+	return (i);
+}
