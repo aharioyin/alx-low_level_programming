@@ -11,7 +11,10 @@
 
 int main(int argc, char **argv)
 {
-	printf("%s\n", argv);
+	(void)argc;
+
+
+	printf("%s\n", *argv);
 
 	return (0);
 }
