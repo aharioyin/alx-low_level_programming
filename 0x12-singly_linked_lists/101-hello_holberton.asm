@@ -13,4 +13,4 @@ _start:
     syscall
 
 hello:
-    .ascii  'Hello, Holberton\n', 0
+    .db  'Hello, Holberton\n', 0
