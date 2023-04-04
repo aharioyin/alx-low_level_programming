@@ -1,1 +1,21 @@
- global    _start          section   .text_start:   mov       rax, 1                  ; system call for write          mov       rdi, 1                  ; file handle 1 is stdout          mov       rsi, message            ; address of string to output          mov       rdx, 13                 ; number of bytes          syscall                           ; invoke operating system to do the write          mov       rax, 60                 ; system call for exit          xor       rdi, rdi                ; exit code 0          syscall                           ; invoke operating system to exit          section   .datamessage:  db        "Hello, Holberton\n", 10      ; 
+extern	printf		; the C function, to be called
+
+	        section .data		;
+msg:		db "Hello, Holberton", 0 ;
+fmt:	    	db "%s", 10, 0          ;
+
+	        section .text		;
+
+	        global main		;
+main:					;
+	        push    rbp		;
+
+		mov	rdi,fmt
+		mov	rsi,msg
+		mov	rax,0		;
+	        call    printf		;
+
+		pop	rbp		;
+
+		mov	rax,0		;
+		ret			;
