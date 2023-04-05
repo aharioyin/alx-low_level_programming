@@ -43,7 +43,7 @@ size_t free_listint_safe(listint_t **h)
 
 	if (*head == NULL || head == NULL)
 		return (count);
-	while (*head != NULL)
+	while (*head == NULL)
 	{
 		for (j = 0; j < count; j++)
 		{
