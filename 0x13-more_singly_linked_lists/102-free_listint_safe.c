@@ -55,7 +55,7 @@ size_t free_listint_safe(listint_t **h)
 			}
 		}
 		count++;
-		list = _r(list, count, *head);
+		list = _ra(list, count, *head);
 		next = (*head)->next;
 		free(*head);
 		*head = next;

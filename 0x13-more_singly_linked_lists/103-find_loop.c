@@ -11,7 +11,7 @@ listint_t *find_listint_loop(listint_t *head)
 	listint_t *end, *start;
 
 	end = start = head;
-	while (end && fast && start->next)
+	while (end && start && start->next)
 	{
 		end = end->next;
 		start = start->next->next;
