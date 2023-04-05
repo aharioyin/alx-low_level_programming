@@ -16,7 +16,7 @@ listint_t **_ra(listint_t **list, size_t size, listint_t *new)
 	listint_t **addlist;
 	size_t j;
 
-	addlist = malloc(size * sizeof(listint_t));
+	addlist = malloc(size * sizeof(listint_t *));
 	if (addlist == NULL)
 	{
 		free(list);
