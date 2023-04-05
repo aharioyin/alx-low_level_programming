@@ -31,11 +31,11 @@ listint_t **_ra(listint_t **list, size_t size, listint_t *new)
 
 /**
  *free_listint_safe -  frees a listint_t list.
- *@h: double pointer of the head node
+ *@head: double pointer of the head node
  *Return: num of nodes on the list
  */
 
-size_t free_listint_safe(listint_t **h)
+size_t free_listint_safe(listint_t **head)
 {
 	size_t j, count = 0;
 	listint_t **list = NULL;
@@ -43,7 +43,7 @@ size_t free_listint_safe(listint_t **h)
 
 	if (*head == NULL || head == NULL)
 		return (count);
-	while (*head == NULL)
+	while (*head != NULL)
 	{
 		for (j = 0; j < count; j++)
 		{
