@@ -14,17 +14,17 @@ void close_file_des(int fd);
 
 char *allot_mem(char *f)
 {
-	char *buffer;
+	char *buff;
 
-	buffer = (char *) malloc(sizeof(char) * 1024);
+	buff = (char *) malloc(sizeof(char) * 1024);
 
-	if (buffer == NULL)
+	if (buff == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f);
 		exit(99);
 	}
 
-	return (buffer);
+	return (buff);
 }
 
 /**
