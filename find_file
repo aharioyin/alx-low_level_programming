@@ -1,0 +1,2 @@
+#!/bin/bash
+find -name '0-isupper.o' -exec cp {} /alx-low_level_programming/0x09-static_libraries/ \;
