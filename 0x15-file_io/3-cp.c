@@ -18,7 +18,7 @@ char *allot_mem(char *f)
 
 	buffer = (char *) malloc(sizeof(char) * 1024);
 
-	if (buffer = NULL)
+	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: can't write to %s\n", f);
 		exit(99);
@@ -90,8 +90,7 @@ int main(int argc, char *argv[])
 			free(alloc_memory);
 			exit(99);
 		}
-	}
-	while (read > 0);
+	} while (read > 0);
 
 	free(alloc_mem);
 	close_file_des(cp_from);
