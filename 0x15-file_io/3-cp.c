@@ -20,7 +20,7 @@ char *allot_mem(char *f)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: can't write to %s\n", f);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f);
 		exit(99);
 	}
 
@@ -66,10 +66,10 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	alloc_memory = allot_mem(argc[2]);
+	alloc_memory = allot_mem(argv[2]);
 	cp_from = open(argv[1], O_RDONLY);
 	read = read(from, buffer, 1024);
-	cp_tp = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	cp_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
 
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 		}
 	} while (read > 0);
 
-	free(alloc_mem);
+	free(alloc_memory);
 	close_file_des(cp_from);
 	close_file_des(cp_to);
 
