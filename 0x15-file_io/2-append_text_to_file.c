@@ -11,7 +11,7 @@ size_t _strlen(char *str)
 	size_t j;
 
 	for (j = 0; str[j]; j++)
-	;
+		;
 
 	return (j);
 }
@@ -34,7 +34,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	ap = open(filename, O_WRONLY || O_APPEND);
+	ap = open(filename, O_WRONLY | O_APPEND);
 	if (text_content != NULL)
 		len = write(ap, text_content, _strlen(text_content));
 	if (ap == -1)
