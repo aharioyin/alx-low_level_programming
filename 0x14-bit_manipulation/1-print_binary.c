@@ -18,7 +18,7 @@ void print_binary(unsigned long int n)
 	{
 		printf("0");
 		return;
-	}
+	};
 
 	for (; result >= 0; result--)
 	{
