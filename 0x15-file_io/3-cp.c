@@ -2,63 +2,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char *allot_mem(char *f);
-void close_file_des(int fd);
-
-
 /**
- *allot_mem - function that allocates 1024 bytes of memory
- *@f: pointer to the file allot_mem
- *Return: pointer to allocated memory location
- */
-
-char *allot_mem(char *f)
-{
-	char *buff;
-
-	buff = (char *) malloc(sizeof(char) * 1024);
-
-	if (buff == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f);
-		exit(99);
-	}
-
-	return (buff);
-}
-
-/**
- *close_file_des - functions that closes the file
- *@fd: file to be closed
- */
-
-void close_file_des(int fd)
-{
-	int cl;
-
-	cl = cl(fd);
-
-	if (cl == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-}
-
-
-/**
- *main - copies content from a file to a file
+ *main - copies content from and to a file
  *@argv: pointer array to the arguments
  *@argc: arguments count
  *Return: 0
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int read, write;
-	int cp_from;
-	int cp_to;
-	char *alloc_memory;
+	ssize_t read_file = 1024, write_file, close_file_des;
+	int cp_from, cp_to;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
@@ -66,35 +21,48 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	alloc_memory = allot_mem(argv[2]);
 	cp_from = open(argv[1], O_RDONLY);
-	read = read(from, buffer, 1024);
+	if (cp_from == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+
 	cp_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (cp_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
 
-	do {
+	if (read_file == 1024)
+	{
+		read_file = read(cp_from, buffer, 1024);
+		write_file = write(cp_to, buffer, read_file);
 
-		if (cp_from == -1 || read == -1)
+		if (read_file == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			free(alloc_memory);
 			exit(98);
 		}
-
-		read = read(cp_from, alloc_memory,  1024);
-		cp_to = open(argv[2], O_WRONLY | O_APPEND);
-
-		write = write(cp_to, alloc_memory, read);
-		if (cp_to == -1 || write == -1)
+		if (read_write == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			free(alloc_memory);
 			exit(99);
 		}
-	} while (read > 0);
-
-	free(alloc_memory);
-	close_file_des(cp_from);
-	close_file_des(cp_to);
+	}
+	close_file_des = close(cp_from);
+	if (close_file_des == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", cp_from);
+		exit(100);
+	}
+	close_file_des = close(cp_to);
+	if (close_file_des == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", cp_to);
+		exit(100);
+	}
 
 	return (0);
 }
