@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  *close_file_des - function that closes the file
@@ -9,12 +10,11 @@
 
 void close_file_des(int fd)
 {
-	int close;
+	int close_result;
 
-	close = close(fd);
+	close_result = close(fd);
 
-	if (close == -1)
-
+	if (close_result == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
-		if (read_write == -1)
+		if (write_file == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
