@@ -23,8 +23,8 @@ void print_binary(unsigned long int n)
 	for (; result >= 0; result--)
 	{
 		if ((n >> result) & 1)
-		printf("1");
-	else
-		printf("0");
+			printf("1");
+		else
+			printf("0");
 	};
 }
