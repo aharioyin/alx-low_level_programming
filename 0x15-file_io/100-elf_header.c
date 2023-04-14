@@ -90,8 +90,10 @@ void print_class(Elf64_Ehdr *header)
 
 void print_magic(Elf64_Ehdr *header)
 {
+	int j;
+
 	printf("Magic: ");
-	for (int j = 0; j < EI_NIDENT; j++)
+	for (j = 0; j < EI_NIDENT; j++)
 	{
 		printf("%02x ", header->e_ident[j]);
 	}
@@ -170,7 +172,10 @@ void print_os0abi(Elf64_Ehdr *header)
 		printf("Tru64 UNIX ABI\n");
 		break;
 	case ELFOSABI_STANDALONE:
-		printf("Standalone (embedded) application\n");
+		printf("Standalone App\n");
+		break;
+	default:
+		printf("unknown: %x>\n", header->e_ident[EI_OSABI]);
 	}
 }
 
@@ -178,22 +183,25 @@ void print_os0abi(Elf64_Ehdr *header)
  *main -  displays the information contained in 
  *	the ELF header at the start of an ELF file
  *@argc: argument count
- *@argv:
+ *@argv: array of pointer to the arguments
  *Return: 0
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
+
+	Elf64_Ehdr header;
+	int file_des;
+	const char *filename = argv[1];
+
 	if (argc != 2)
 	{
-		print_error("Usage: ./elf_info <filename>");
+		print_error("Usage: ./rdelf <filename>");
 		exit(98);
 	}
 
-	const char *filename = argv[1];
-	int file_des = op_file(filename);
+	file_des = op_file(filename);
 
-	Elf64_Ehdr header;
 	rd_header(file_des, &header);
 
 	print_class(&header);
